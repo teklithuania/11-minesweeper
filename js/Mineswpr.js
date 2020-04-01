@@ -7,6 +7,8 @@ class Minesweeper {
         this.bombsPercentage = bombsPercentage;
         this.bombsCount = 1;
 
+        // this.cells = [];
+
         this.init();
     }
 
@@ -51,22 +53,32 @@ class Minesweeper {
     }
 
     render() {
+        let cellHTML = '';
+        for (let i = 0; i < this.width*this.height; i++) {
+            cellHTML += `<div class="cell">${i}</div>`;
+        }
+
         let HTML = `<div class="header">
-                        <div class="bombs">099</div>
+                        <div class="counter bombs">099</div>
                         <div class="smile">:)</div>
-                        <div class="timer">000</div>
+                        <div class="counter timer">000</div>
                     </div>
                     <div class="field">
-                        <div class="cell">C</div>
-                        <div class="cell">C</div>
-                        <div class="cell">C</div>
-                        <div class="cell">C</div>
-                        <div class="cell">C</div>
-                        <div class="cell">C</div>
-                        <div class="cell">C</div>
+                        ${cellHTML}
                     </div>`;
         this.DOM.classList.add('minesweeper');
         this.DOM.innerHTML = HTML;
+
+        const cells = this.DOM.querySelectorAll('.cell');
+        
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].addEventListener('click', (event) =>  this.cellClick(event) );
+        }
+
+    }
+    cellClick( event ) {
+        console.log( event.target.innerText, this.bombsPercentage, this.bombsCount );
+        
     }
 }
 

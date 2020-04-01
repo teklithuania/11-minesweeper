@@ -1,0 +1,63 @@
+.minesweeper {
+    display: inline-block;
+    border: 5px solid #bdbdbd;
+    background-color: #eee;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 180px;
+    width: 310px;
+}
+
+.minesweeper > .header {
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+    border-bottom: 5px solid #bdbdbd;
+}
+    .minesweeper > .header > .counter {
+        display: inline-block;
+        float: left;
+        width: 60px;
+        padding: 2px;
+        background-color: #222;
+        color: #F00;
+        font-size: 30px;
+        line-height:30px;
+    }
+    .minesweeper > .header > .counter.timer {
+        float: right;
+    }
+    .minesweeper > .header > .smile {
+        display: inline-block;
+        float: left;
+        width: 30px;
+        height: 30px;
+        margin: 0 calc(50% - 75px);
+        line-height: 30px;
+        font-size: 28px;
+        text-align: center;
+        transform: rotate(90deg);
+        background-color: #ccc;
+        box-shadow:  0 0 2px #777;
+    }   
+.minesweeper > .field {
+    display: inline-block;
+    width: 100%;
+
+    }
+        .minesweeper > .field > .cell {
+            display: inline-block;
+            float: left;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #555;
+            text-align: center;
+            font-size: 24px;
+            line-height: 30px;
+        }
+        .minesweeper > .field > .cell:hover {
+           background-color: #bbb;
+           cursor: pointer;
+        }
