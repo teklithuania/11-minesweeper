@@ -11,8 +11,7 @@ class Minesweeper {
         this.bombsCount = 1;
 
         this.clickCount = 0;
-
-        // this.cells = [];
+        this.cells = [];
 
         this.init();
     }
@@ -71,30 +70,19 @@ class Minesweeper {
 
         // let cellHTML = '';
         for (let i = 0; i < this.width*this.height; i++) {
-            new Cell(i, this);
+            this.cells.push(new Cell(i, this));
         }
     }
     createBombs(cellIndex){
-        console.log('Creating bombs...excerpt for'+cellIndex)
-        console.log('wanted bombs count: '+this.bombsCount);
         let list = [];
-
-        // for( let i=0; i<this.bombsCount; i++) {
-        //     const position = Math.floor( Math.random()*this.width*this.height);
-        //     if (list.indexOf(position) === -1 && position !== cellIndex) {
-        //         list.push( position );
-        //     } else {
-        //         i--;
-        //     }
-        
+          
         while (list.length < this.bombsCount) {
             const position = Math.floor( Math.random()*this.width*this.height);
             if (list.indexOf(position) === -1 && position !== cellIndex) {
                 list.push( position );
+                this.cells[position].addBomb();
             }
-        }
-        console.log(list);
-        
+        }   
     }
     checkCell(cellIndex){
         console.log('cell: '+cellIndex);
@@ -108,6 +96,5 @@ class Minesweeper {
 }
 
 const game = new Minesweeper('#game', 10, 10, 15);
-// const game = new Minesweeper('#game', 10, 1, 70);
 
 console.log(game);
