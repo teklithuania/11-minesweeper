@@ -10,6 +10,8 @@ class Minesweeper {
         this.bombsPercentage = bombsPercentage;
         this.bombsCount = 1;
 
+        this.clickCount = 0;
+
         // this.cells = [];
 
         this.init();
@@ -69,11 +71,43 @@ class Minesweeper {
 
         // let cellHTML = '';
         for (let i = 0; i < this.width*this.height; i++) {
-            new Cell(i, this.DOMfield);
+            new Cell(i, this);
         }
+    }
+    createBombs(cellIndex){
+        console.log('Creating bombs...excerpt for'+cellIndex)
+        console.log('wanted bombs count: '+this.bombsCount);
+        let list = [];
+
+        // for( let i=0; i<this.bombsCount; i++) {
+        //     const position = Math.floor( Math.random()*this.width*this.height);
+        //     if (list.indexOf(position) === -1 && position !== cellIndex) {
+        //         list.push( position );
+        //     } else {
+        //         i--;
+        //     }
+        
+        while (list.length < this.bombsCount) {
+            const position = Math.floor( Math.random()*this.width*this.height);
+            if (list.indexOf(position) === -1 && position !== cellIndex) {
+                list.push( position );
+            }
+        }
+        console.log(list);
+        
+    }
+    checkCell(cellIndex){
+        console.log('cell: '+cellIndex);
+        
+
+        if (this.clickCount === 0) {
+            this.createBombs();
+        }
+        this.clickCount++;
     }
 }
 
 const game = new Minesweeper('#game', 10, 10, 15);
+// const game = new Minesweeper('#game', 10, 1, 70);
 
 console.log(game);

@@ -1,14 +1,15 @@
 class Cell {
-    constructor(index, parentDOM) {
+    constructor(index, parent) {
         this.index = index;
-        this.parentDOM = parentDOM;
+        this.parent = parent;
+        this.parentDOM = this.parent.DOMfield;
         this.DOM = null;
 
         this.init();
     }
 
     init(){
-        const HTML = `<div class="cell" data-index="${this.index}">${this.index}</div>`;
+        const HTML = `<div class="cell" data-index="${this.index}"></div>`;
         // this.parentDOM.innerHTML += HTML;
 
         this.parentDOM.insertAdjacentHTML('beforeend', HTML);
@@ -20,7 +21,7 @@ class Cell {
     }
 
     click(){
-        console.log('Paspausta cele: '+this.index);
+        this.parent.checkCell(this.index);
     }
 }
 
