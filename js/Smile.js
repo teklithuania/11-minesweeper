@@ -8,17 +8,17 @@ class Smile {
     }
 
     render () {
-        const HTML = `<div class="smile">:)</div>`;
+        const HTML = `<div class="smile">😊</div>`;
         this.parentHeader.insertAdjacentHTML('beforeend', HTML);
         this.DOM = this.parentHeader.querySelector('.smile');
         this.DOM.addEventListener('click', () => this.PARENT.resetGame() );
     }
 
     sad() {
-        this.DOM.innerText = ':(';
+        this.DOM.innerText = '😢';
     }
     happy() {
-        this.DOM.innerText = ':)';
+        this.DOM.innerText = '😊';
     }
 }
 
