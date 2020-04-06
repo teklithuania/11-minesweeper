@@ -25,3 +25,5 @@
         - jei nėra: skaišiuojame kiek aplinkui yra bombų
             - į atidarytą langelį įrašome suskaičiuotą kiekį
             - jeigu bombų nėra (kiekis 0), tai atidarinėjame sekančius aplinkinius langelius
+            
+PLAY --> [Here](https://teklithuania.github.io/11-minesweeper/index.html)
