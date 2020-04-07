@@ -206,6 +206,6 @@ class Minesweeper {
     }
 }
 
-const game = new Minesweeper('#game', 30, 18, 1);
+const game = new Minesweeper('#game', 30, 18, 15);
 
 console.log(game);
