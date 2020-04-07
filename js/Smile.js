@@ -20,6 +20,9 @@ class Smile {
     happy() {
         this.DOM.innerText = '😊';
     }
+    win() {
+        this.DOM.innerText = '🥳';
+    }
 }
 
 export default Smile;
