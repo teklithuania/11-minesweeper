@@ -18,13 +18,12 @@ class Cell {
         this.parentDOM.insertAdjacentHTML('beforeend', HTML);
 
         this.DOM = this.parentDOM.querySelector(`#c_${this.index}`);
-
-        this.DOM.addEventListener( 'click', (event) => this.click(event), {once: true} );
-        this.DOM.addEventListener('contextmenu', (event) => this.rightClick(event));
+        this.DOM.addEventListener( 'click', (e) => this.click(e), {once: true} );
+        this.DOM.addEventListener( 'contextmenu', (e) => this.rightClick(e) )
     }
 
-    click( event ) {       
-        if ( this.PARENT.canPlay && !this.opened ) {
+    click( event ) {
+        if ( this.PARENT.canPlay && !this.opened && !this.flaged ) {
             this.DOM.classList.add('open');
             if ( this.hasBomb ) {
                 this.DOM.classList.add('bomb');
@@ -33,17 +32,16 @@ class Cell {
         }
     }
 
-    rightClick(event) {
+    rightClick( event ) {
         event.preventDefault();
-        if (this.flaged) {
-            this.DOM.classList.remove('flag');        
-            this.PARENT.updateBombCounter(1);
+        if ( this.flaged ) {
+            this.DOM.classList.remove('flag');
+            this.PARENT.updateBombCounter( 1 );
         } else {
-            this.DOM.classList.add('flag');        
-            this.PARENT.updateBombCounter(-1);
+            this.DOM.classList.add('flag');
+            this.PARENT.updateBombCounter( -1 );
         }
         this.flaged = !this.flaged;
-        // this.DOM.classList.toggle('flag');        
     }
 
     addBomb() {
@@ -53,10 +51,9 @@ class Cell {
 
     showNumber( number ) {
         this.opened = true;
-        if (number > 0) {
+        if ( number > 0 ) {
             this.DOM.innerText = number;
         }
-
 
         // this.DOM.innerText = number > 0 ? number : '';
     }
