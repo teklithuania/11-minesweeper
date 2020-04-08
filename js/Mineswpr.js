@@ -125,7 +125,6 @@ class Minesweeper {
             
             const cx = this.cells[cellIndex].x;
             const cy = this.cells[cellIndex].y;
-            console.log( 'Cele:', cx, cy );
             
             if ( surroundingBombs === 0 ) {
                 for ( let dx=-1; dx<=1; dx++ ) {
@@ -202,10 +201,11 @@ class Minesweeper {
     gameOver() {
         this.canPlay = false;
         this.smile.sad();
-        console.log('GAME OVER...');
+    }
+    updateBombCounter(value) {
+        this.bombCounter.update(value);
     }
 }
 
 const game = new Minesweeper('#game', 30, 18, 15);
 
-console.log(game);

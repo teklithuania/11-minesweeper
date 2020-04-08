@@ -8,6 +8,7 @@ class Cell {
         this.DOM = null;
         this.hasBomb = false;
         this.opened = false;
+        this.flaged = false;
 
         this.init();
     }
@@ -19,6 +20,7 @@ class Cell {
         this.DOM = this.parentDOM.querySelector(`#c_${this.index}`);
 
         this.DOM.addEventListener( 'click', (event) => this.click(event), {once: true} );
+        this.DOM.addEventListener('contextmenu', (event) => this.rightClick(event));
     }
 
     click( event ) {       
@@ -29,6 +31,19 @@ class Cell {
             }
             this.PARENT.checkCell( this.index );
         }
+    }
+
+    rightClick(event) {
+        event.preventDefault();
+        if (this.flaged) {
+            this.DOM.classList.remove('flag');        
+            this.PARENT.updateBombCounter(1);
+        } else {
+            this.DOM.classList.add('flag');        
+            this.PARENT.updateBombCounter(-1);
+        }
+        this.flaged = !this.flaged;
+        // this.DOM.classList.toggle('flag');        
     }
 
     addBomb() {
